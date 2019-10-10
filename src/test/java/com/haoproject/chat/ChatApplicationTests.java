@@ -11,6 +11,12 @@ public class ChatApplicationTests {
 
     @Test
     public void contextLoads() {
+
+    }
+
+    @Test
+    public void mySQLConnectionTest() {
+
     }
 
 }
