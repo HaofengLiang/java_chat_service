@@ -23,36 +23,5 @@ import static org.junit.Assert.*;
 @SpringBootTest
 public class ChatControllerTest {
 
-    @Autowired
-    ChatService chatService;
 
-    @Before
-    private void deleteTestChatIfExists() {
-        long userId1 = 1;
-        long userId2 = 2;
-        Chat chat = chatService.getChatByUserIds(userId1, userId2);
-        if (chat != null) {
-            chatService.deleteChatByUserIds(userId1, userId2);
-        }
-    }
-
-    @Test
-    public void createNewEmptyChat() throws ChatExistsException {
-        long userId1 = 1;
-        long userId2 = 2;
-        Chat chat = chatService.getChatByUserIds(userId1, userId2);
-        assertNull(chat);
-        chatService.createChatToUserIds(userId1, userId2);
-        chat = chatService.getChatByUserIds(userId1, userId2);
-        assertNotNull(chat);
-        assertEquals(chat.getMessages().size(), 0);
-    }
-
-    @Test
-    public void getAllMessagesInAChatByUserIds() {
-//        long userId1 = 1;
-//        long userId2 = 2;
-//        Chat chat= chatService.getChatByUserIds(userId1, userId2);
-
-    }
 }
