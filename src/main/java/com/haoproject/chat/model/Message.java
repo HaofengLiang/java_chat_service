@@ -16,10 +16,13 @@ import java.util.Date;
 public class Message {
     @Id
     private long id;
+
     @NonNull
     private String message;
+
     @NonNull
     @ManyToOne
+    @JoinColumn(name = "chat_id")
     private Chat chat;
 
     private long creationTimestamp;
