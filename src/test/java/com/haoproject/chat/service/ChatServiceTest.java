@@ -50,8 +50,7 @@ public class ChatServiceTest {
         Chat chat = chatService.getChatByUserIds(userId1, userId2);
         assertNotNull(chat);
         assertEquals(chat.getMessages().size(), 0);
-        Message newMessage = new Message("Hello there.", userId1, userId2, chat);
-        chatService.sendMessage(newMessage);
+        chatService.sendMessage("Hello there.", userId1, userId2);
         assertEquals(chat.getMessages().size(), 1);
     }
 

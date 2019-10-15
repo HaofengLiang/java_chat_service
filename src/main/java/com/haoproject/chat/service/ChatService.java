@@ -33,6 +33,7 @@ public class ChatService {
         }
     }
 
-    public void sendMessage(Message newMessage) {
+    public void sendMessage(String message, long fromUserId, long toUserId) {
+        
     }
 }
