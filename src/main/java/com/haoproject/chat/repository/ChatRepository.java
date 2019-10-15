@@ -10,12 +10,12 @@ import java.util.Optional;
 
 @Repository
 public interface ChatRepository extends CrudRepository<Chat, Long> {
-    Iterable<Chat> findAllByToUserId(long toUserId);
-
-    Iterable<Chat> findAllByFromUserId(long fromUserId);
+    @Query("SELECT c FROM Chat c " +
+            "WHERE userId1 = :userId OR userId2 = :userId")
+    Iterable<Chat> findAllByUserId(@Param("userId") long userId);
 
     @Query("SELECT c FROM Chat c " +
-            "WHERE (toUserId = :userId1 AND fromUserId = :userId2) OR (toUserId = :userId2 AND fromUserId = :userId1)")
+            "WHERE (userId1 = :userId1 AND userId2 = :userId2) OR (userId1 = :userId2 AND userId2 = :userId1)")
     Optional<Chat> findByUserIds(@Param("userId1") long userId1, @Param("userId2") long userId2);
 
 }

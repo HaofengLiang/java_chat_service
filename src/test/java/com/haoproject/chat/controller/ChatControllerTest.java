@@ -26,6 +26,16 @@ public class ChatControllerTest {
     @Autowired
     ChatService chatService;
 
+    @Before
+    private void deleteTestChatIfExists() {
+        long userId1 = 1;
+        long userId2 = 2;
+        Chat chat = chatService.getChatByUserIds(userId1, userId2);
+        if (chat != null) {
+            chatService.deleteChatByUserIds(userId1, userId2);
+        }
+    }
+
     @Test
     public void createNewEmptyChat() throws ChatExistsException {
         long userId1 = 1;

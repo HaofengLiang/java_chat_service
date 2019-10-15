@@ -23,4 +23,11 @@ public class ChatService {
         Chat newChat = new Chat(userId1, userId2);
         chatRepository.save(newChat);
     }
+
+    public void deleteChatByUserIds(long userId1, long userId2) {
+        Chat targetChat = getChatByUserIds(userId1, userId2);
+        if (targetChat != null) {
+            chatRepository.delete(targetChat);
+        }
+    }
 }
