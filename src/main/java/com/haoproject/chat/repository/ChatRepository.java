@@ -5,6 +5,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.Optional;
+
 
 public interface ChatRepository extends CrudRepository<Chat, Long> {
     Iterable<Chat> findAllByToUserId(long toUserId);
@@ -13,6 +15,6 @@ public interface ChatRepository extends CrudRepository<Chat, Long> {
 
     @Query("SELECT c FROM Chat c " +
             "WHERE (toUserId = :userId1 AND fromUserId = :userId2) OR (toUserId = :userId2 AND fromUserId = :userId1)")
-    Iterable<Chat> findAllByUserIds(@Param("userId1") long toUserId, @Param("userId2") long fromUserId);
+    Optional<Chat> findByUserIds(@Param("userId1") long userId1, @Param("userId2") long userId2);
 
 }

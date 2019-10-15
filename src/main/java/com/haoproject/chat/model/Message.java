@@ -2,14 +2,15 @@ package com.haoproject.chat.model;
 
 import lombok.Data;
 import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
+@RequiredArgsConstructor
 @Table(name = "messages")
 public class Message {
     @Id
@@ -19,4 +20,11 @@ public class Message {
     @NonNull
     @ManyToOne
     private Chat chat;
+
+    private long creationTimestamp;
+
+    @PrePersist
+    protected void onCreate() {
+        creationTimestamp = new Date().getTime();
+    }
 }

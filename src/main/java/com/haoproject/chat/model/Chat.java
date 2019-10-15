@@ -6,6 +6,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -20,5 +21,5 @@ public class Chat {
     @NonNull
     private long toUserId;
     @OneToMany(mappedBy = "chat")
-    private List<Message> messages;
+    private List<Message> messages = new ArrayList<>();
 }
