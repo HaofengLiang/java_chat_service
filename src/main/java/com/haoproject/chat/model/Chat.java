@@ -21,6 +21,6 @@ public class Chat {
     private long userId1;
     @NonNull
     private long userId2;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "chat", cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "chat", cascade = CascadeType.ALL)
     private List<Message> messages = new ArrayList<>();
 }
