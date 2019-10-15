@@ -4,10 +4,11 @@ import com.haoproject.chat.model.Chat;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-
+@Repository
 public interface ChatRepository extends CrudRepository<Chat, Long> {
     Iterable<Chat> findAllByToUserId(long toUserId);
 

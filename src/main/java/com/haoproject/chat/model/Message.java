@@ -1,9 +1,9 @@
 package com.haoproject.chat.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -11,6 +11,7 @@ import java.util.Date;
 @Data
 @Entity
 @RequiredArgsConstructor
+@NoArgsConstructor
 @Table(name = "messages")
 public class Message {
     @Id

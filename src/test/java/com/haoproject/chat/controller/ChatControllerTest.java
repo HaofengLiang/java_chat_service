@@ -7,26 +7,27 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.junit.Assert.*;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
 public class ChatControllerTest {
 
     @Autowired
-    MockMvc mockMvc;
-
-    @MockBean
     ChatService chatService;
 
     @Test
-    void createNewEmptyChat() throws ChatExistsException {
+    public void createNewEmptyChat() throws ChatExistsException {
         long userId1 = 1;
         long userId2 = 2;
         Chat chat = chatService.getChatByUserIds(userId1, userId2);
@@ -38,7 +39,7 @@ public class ChatControllerTest {
     }
 
     @Test
-    void getAllMessagesInAChatByUserIds() {
+    public void getAllMessagesInAChatByUserIds() {
 //        long userId1 = 1;
 //        long userId2 = 2;
 //        Chat chat= chatService.getChatByUserIds(userId1, userId2);
