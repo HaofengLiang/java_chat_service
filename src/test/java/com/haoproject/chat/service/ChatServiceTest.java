@@ -2,6 +2,7 @@ package com.haoproject.chat.service;
 
 import com.haoproject.chat.Exception.ChatExistsException;
 import com.haoproject.chat.model.Chat;
+import com.haoproject.chat.model.Message;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,6 +41,18 @@ public class ChatServiceTest {
         chat = chatService.getChatByUserIds(userId1, userId2);
         assertNotNull(chat);
         assertEquals(chat.getMessages().size(), 0);
+    }
+
+    @Test
+    public void sendMessage() {
+        long userId1 = 1;
+        long userId2 = 2;
+        Chat chat = chatService.getChatByUserIds(userId1, userId2);
+        assertNotNull(chat);
+        assertEquals(chat.getMessages().size(), 0);
+        Message newMessage = new Message("Hello there.", userId1, userId2, chat);
+        chatService.sendMessage(newMessage);
+        assertEquals(chat.getMessages().size(), 1);
     }
 
     @Test

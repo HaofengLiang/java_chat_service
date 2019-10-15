@@ -21,6 +21,12 @@ public class Message {
     private String message;
 
     @NonNull
+    private long fromUserId;
+
+    @NonNull
+    private long toUserId;
+
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "chat_id")
     private Chat chat;

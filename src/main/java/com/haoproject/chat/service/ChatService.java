@@ -2,6 +2,7 @@ package com.haoproject.chat.service;
 
 import com.haoproject.chat.Exception.ChatExistsException;
 import com.haoproject.chat.model.Chat;
+import com.haoproject.chat.model.Message;
 import com.haoproject.chat.repository.ChatRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 public class ChatService {
     @Autowired
     ChatRepository chatRepository;
+    
 
     public Chat getChatByUserIds(long userId1, long userId2) {
         return chatRepository.findByUserIds(userId1, userId2).orElse(null);
@@ -29,5 +31,8 @@ public class ChatService {
         if (targetChat != null) {
             chatRepository.deleteById(targetChat.getId());
         }
+    }
+
+    public void sendMessage(Message newMessage) {
     }
 }
