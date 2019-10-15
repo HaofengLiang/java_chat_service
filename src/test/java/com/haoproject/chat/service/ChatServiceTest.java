@@ -1,5 +1,6 @@
 package com.haoproject.chat.service;
 
+import com.haoproject.chat.Exception.ChatException;
 import com.haoproject.chat.Exception.ChatExistsException;
 import com.haoproject.chat.model.Chat;
 import com.haoproject.chat.model.Message;
@@ -44,7 +45,7 @@ public class ChatServiceTest {
     }
 
     @Test
-    public void sendMessage() {
+    public void sendMessage() throws ChatException {
         long userId1 = 1;
         long userId2 = 2;
         Chat chat = chatService.getChatByUserIds(userId1, userId2);

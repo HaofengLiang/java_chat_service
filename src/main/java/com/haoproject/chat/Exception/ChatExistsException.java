@@ -1,5 +1,5 @@
 package com.haoproject.chat.Exception;
 
-public class ChatExistsException extends Exception {
+public class ChatExistsException extends ChatException {
 
 }
